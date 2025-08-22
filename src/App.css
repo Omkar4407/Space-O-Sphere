@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* Malhar Fest inspired color scheme */
+:root {
+  --primary-orange: #ff6b35;
+  --primary-pink: #ff006e;
+  --primary-purple: #8338ec;
+  --primary-blue: #3a86ff;
+  --secondary-yellow: #ffbe0b;
+  --secondary-green: #06ffa5;
+  --dark-bg: #0a0a0a;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+/* Animated star field background */
+.stars, .twinkling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stars {
+  background: transparent url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjAuNSIgZmlsbD0iI2ZmNmIzNSIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPGNpcmNsZSBjeD0iMTAiIGN5PSI4IiByPSIwLjMiIGZpbGw9IiNmZjAwNmUiIGZpbGwtb3BhY2l0eT0iMC42Ii8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMTUiIHI9IjAuNCIgZmlsbD0iIzgzMzhlYyIgZmlsbC1vcGFjaXR5PSIwLjciLz4KPGNpcmNsZSBjeD0iMzAiIGN5PSI1IiByPSIwLjIiIGZpbGw9IiMzYTg2ZmYiIGZpbGwtb3BhY2l0eT0iMC41Ii8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMjUiIHI9IjAuNiIgZmlsbD0iI2ZmYmUwYiIgZmlsbC1vcGFjaXR5PSIwLjkiLz4KPGNpcmNsZSBjeD0iNSIgY3k9IjMwIiByPSIwLjMiIGZpbGw9IiMwNmZmYTUiIGZpbGwtb3BhY2l0eT0iMC42Ii8+CjxjaXJjbGUgY3g9IjI1IiBjeT0iMzUiIHI9IjAuNCIgZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIwLjciLz4KPC9zdmc+') repeat;
+  animation: stars-move 120s linear infinite;
+}
+
+.twinkling {
+  background: transparent url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTUiIGN5PSIxMCIgcj0iMC44IiBmaWxsPSIjZmY2YjM1IiBmaWxsLW9wYWNpdHk9IjAuNCIvPgo8Y2lyY2xlIGN4PSI4IiBjeT0iMjgiIHI9IjAuNiIgZmlsbD0iI2ZmMDA2ZSIgZmlsbC1vcGFjaXR5PSIwLjMiLz4KPGNpcmNsZSBjeD0iMzIiIGN5PSIxOCIgcj0iMC43IiBmaWxsPSIjODMzOGVjIiBmaWxsLW9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4=') repeat;
+  animation: twinkling 4s ease-in-out infinite alternate;
+}
+
+@keyframes stars-move {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+@keyframes twinkling {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 53, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 53, 0.8);
+}
+
+/* Malhar-inspired gradient backgrounds */
+.malhar-gradient-1 {
+  background: linear-gradient(135deg, #ff6b35, #ff006e);
+}
+
+.malhar-gradient-2 {
+  background: linear-gradient(135deg, #ff006e, #8338ec);
+}
+
+.malhar-gradient-3 {
+  background: linear-gradient(135deg, #8338ec, #3a86ff);
+}
+
+.malhar-gradient-4 {
+  background: linear-gradient(135deg, #3a86ff, #06ffa5);
+}
+
+.malhar-gradient-5 {
+  background: linear-gradient(135deg, #06ffa5, #ffbe0b);
+}
+
+.malhar-gradient-6 {
+  background: linear-gradient(135deg, #ffbe0b, #ff6b35);
+}
