@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Missions - Space-O-Sphere</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/three@0.149.0/build/three.min.js"></script>
+</head>
+<body>
+    <!-- Three.js Starfield Background -->
+    <canvas id="starfield-canvas"></canvas>
+    
+    <!-- Back to Home Button -->
+    <div class="back-button">
+        <a href="index.html" class="back-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to Home
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="solar.html" class="nav-link">Solar System</a>
+        <a href="missions.html" class="nav-link active">Missions</a>
+        <a href="about.html" class="nav-link">About</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="missions-content">
+        <div class="missions-header">
+            <h1 class="missions-title">Space Missions</h1>
+            <p class="missions-subtitle">Explore the latest space missions and discoveries</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search missions..." class="search-input">
+                <button id="searchBtn" class="search-btn">Search</button>
+            </div>
+            <div class="filter-options">
+                <select id="missionType" class="filter-select">
+                    <option value="">All Mission Types</option>
+                    <option value="Orbiter">Orbiter</option>
+                    <option value="Lander">Lander</option>
+                    <option value="Rover">Rover</option>
+                    <option value="Flyby">Flyby</option>
+                    <option value="Sample Return">Sample Return</option>
+                </select>
+                <select id="targetBody" class="filter-select">
+                    <option value="">All Targets</option>
+                    <option value="Mars">Mars</option>
+                    <option value="Moon">Moon</option>
+                    <option value="Jupiter">Jupiter</option>
+                    <option value="Saturn">Saturn</option>
+                    <option value="Venus">Venus</option>
+                    <option value="Mercury">Mercury</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="loading-spinner"></div>
+            <p>Loading missions...</p>
+        </div>
+
+        <!-- Missions Grid -->
+        <div class="missions-grid" id="missionsGrid">
+            <!-- Missions will be populated here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <button class="pagination-btn" id="prevBtn">Previous</button>
+            <span class="page-info" id="pageInfo">Page 1</span>
+            <button class="pagination-btn" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <!-- Mission Detail Modal -->
+    <div class="mission-modal" id="missionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Mission Details</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Mission details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="missions.js"></script>
+</body>
+</html>

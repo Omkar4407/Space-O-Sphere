@@ -1,0 +1,1436 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Three.js Starfield Background */
+#starfield-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+
+/* Settings Container */
+.settings-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.gear-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 150, 255, 0.1);
+    border: 2px solid #0096ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    color: #0096ff;
+}
+
+.gear-icon:hover {
+    transform: rotate(180deg);
+    background: rgba(0, 150, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+}
+
+.settings-panel {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #0096ff;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 200px;
+    backdrop-filter: blur(10px);
+    transform: translateY(-20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.settings-panel.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel h3 {
+    color: #0096ff;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+}
+
+.setting-group {
+    margin-bottom: 15px;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.frame-options {
+    display: flex;
+    gap: 8px;
+}
+
+.frame-btn {
+    background: rgba(0, 150, 255, 0.1);
+    border: 1px solid #0096ff;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.frame-btn:hover,
+.frame-btn.active {
+    background: rgba(0, 150, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.hero-section {
+    text-align: center;
+    max-width: 800px;
+}
+
+.main-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(0, 150, 255, 0.8);
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(0, 150, 255, 0.8); }
+    to { text-shadow: 0 0 30px rgba(0, 150, 255, 1), 0 0 40px rgba(0, 150, 255, 0.5); }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #b0b0b0;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 15px 30px;
+    border: 2px solid;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: 'Orbitron', monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn.primary {
+    background: linear-gradient(45deg, #0096ff, #00d4ff);
+    border-color: #0096ff;
+    color: #ffffff;
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 150, 255, 0.4);
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 107, 107, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+/* Countdown Timer */
+.countdown-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    min-width: 300px;
+}
+
+.countdown-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    color: #0096ff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.countdown-number {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+}
+
+.countdown-label {
+    font-size: 0.8rem;
+    color: #b0b0b0;
+    margin-top: 5px;
+}
+
+.countdown-separator {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    color: #0096ff;
+    font-weight: 700;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 150, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(0, 150, 255, 0.1);
+    border: 1px solid #0096ff;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
+}
+
+/* Solar System Page Styles */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* Solar System Settings - Position differently to avoid conflicts */
+.solar-system .settings-container {
+    position: fixed;
+    top: 20px;
+    left: 80px; /* Position to the right of back button */
+    z-index: 1000;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+    background: rgba(0, 150, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
+}
+
+#scene-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.distance-display {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.distance-label {
+    color: #0096ff;
+    font-size: 0.9rem;
+    margin-right: 10px;
+}
+
+.distance-value {
+    color: #ffffff;
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+}
+
+.info-panel {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #0096ff;
+    border-radius: 15px;
+    padding: 25px;
+    width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.info-panel.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 150, 255, 0.3);
+}
+
+.info-header h2 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.3rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+}
+
+.info-section {
+    margin-bottom: 20px;
+}
+
+.info-section h3 {
+    color: #0096ff;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', monospace;
+}
+
+.info-section p,
+.info-section ul {
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.info-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-section li {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.controls-info {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.controls-info h3 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 10px;
+}
+
+.controls-info ul {
+    list-style: none;
+    color: #ffffff;
+}
+
+.controls-info li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    transition: opacity 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    color: #ffffff;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(0, 150, 255, 0.3);
+    border-top: 3px solid #0096ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-content h2 {
+    font-family: 'Orbitron', monospace;
+    color: #0096ff;
+    margin-bottom: 10px;
+}
+
+.loading-content p {
+    color: #b0b0b0;
+}
+
+/* Missions Page Styles */
+.missions-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 40px;
+    min-height: 100vh;
+}
+
+.missions-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.missions-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(0, 150, 255, 0.8);
+    margin-bottom: 15px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.missions-subtitle {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    font-weight: 300;
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    min-width: 250px;
+}
+
+.search-input::placeholder {
+    color: #b0b0b0;
+}
+
+.search-btn {
+    background: linear-gradient(45deg, #0096ff, #00d4ff);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 150, 255, 0.4);
+}
+
+.filter-options {
+    display: flex;
+    gap: 15px;
+}
+
+.filter-select {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 10px;
+    padding: 8px 15px;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    cursor: pointer;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 40px;
+    color: #ffffff;
+}
+
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.mission-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.mission-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 150, 255, 0.3);
+    border-color: #00d4ff;
+}
+
+.mission-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.3rem;
+    color: #0096ff;
+    margin-bottom: 10px;
+}
+
+.mission-info {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.mission-type {
+    display: inline-block;
+    background: rgba(0, 150, 255, 0.2);
+    border: 1px solid #0096ff;
+    border-radius: 15px;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    color: #0096ff;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.mission-status {
+    display: inline-block;
+    background: rgba(0, 255, 136, 0.2);
+    border: 1px solid #00ff88;
+    border-radius: 15px;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    color: #00ff88;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.pagination-btn {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-family: 'Orbitron', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: rgba(0, 150, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-info {
+    color: #ffffff;
+    font-family: 'Orbitron', monospace;
+}
+
+.no-missions {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 40px;
+    grid-column: 1 / -1;
+}
+
+.mission-detail-info {
+    margin-bottom: 20px;
+}
+
+.mission-description h4 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    margin: 20px 0 10px 0;
+}
+
+/* Mission Modal */
+.mission-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.mission-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid #0096ff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 150, 255, 0.3);
+}
+
+.modal-header h2 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+}
+
+.modal-body {
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* About Page Styles */
+.about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 120px 20px 40px;
+    min-height: 100vh;
+}
+
+/* NASA API Integration Styles */
+
+/* APOD Background */
+#apod-background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.apod-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* APOD Info Panel */
+#apod-info-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 400px;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.apod-info-panel {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #0096ff;
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);
+}
+
+.apod-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 150, 255, 0.3);
+}
+
+.apod-header h3 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.apod-date {
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.apod-content h4 {
+    color: #ffffff;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+}
+
+.apod-content p {
+    color: #cccccc;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.apod-copyright {
+    color: #0096ff;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Mars Gallery */
+#mars-gallery-container {
+    margin-top: 20px;
+}
+
+.mars-gallery h3 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.mars-photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.mars-photo-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.3);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.mars-photo-item img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 10px;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.photo-date {
+    display: block;
+    color: #0096ff;
+    font-weight: 600;
+}
+
+.photo-camera {
+    display: block;
+    color: #cccccc;
+    font-size: 0.7rem;
+}
+
+/* Photo Modal */
+.photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.photo-modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+}
+
+.photo-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.photo-modal-close:hover {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+}
+
+/* Planet NASA Panel */
+.planet-nasa-panel {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.planet-nasa-header h3 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.planet-apod-section,
+.planet-mars-section {
+    margin-bottom: 20px;
+}
+
+.planet-apod-section h4,
+.planet-mars-section h4 {
+    color: #ffffff;
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    margin: 0 0 10px 0;
+}
+
+.planet-apod-preview {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.planet-apod-preview img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #0096ff;
+}
+
+.apod-preview-info h5 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    margin: 0 0 5px 0;
+}
+
+.apod-preview-info p {
+    color: #cccccc;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.planet-mars-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.planet-mars-photo {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.planet-mars-photo img {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+}
+
+.photo-sol {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #0096ff;
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* Responsive adjustments for NASA components */
+@media (max-width: 768px) {
+    #apod-info-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        max-width: 100%;
+        margin: 20px;
+    }
+
+    .mars-photos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .planet-apod-preview {
+        flex-direction: column;
+    }
+
+    .planet-apod-preview img {
+        width: 100%;
+        height: 120px;
+    }
+
+    .planet-mars-photos {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    }
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(0, 150, 255, 0.8);
+    margin-bottom: 15px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    font-weight: 300;
+}
+
+.about-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.about-section {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0096ff;
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.about-section h2 {
+    font-family: 'Orbitron', monospace;
+    color: #0096ff;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feature-card {
+    background: rgba(0, 150, 255, 0.1);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 150, 255, 0.2);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tech-item {
+    background: rgba(0, 150, 255, 0.1);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.tech-item h4 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 15px;
+}
+
+.tech-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-item li {
+    color: #ffffff;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.education-list {
+    list-style: none;
+    padding: 0;
+}
+
+.education-list li {
+    color: #ffffff;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-left: 25px;
+}
+
+.education-list li::before {
+    content: '→';
+    color: #0096ff;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.future-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.future-item {
+    background: rgba(0, 150, 255, 0.1);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.future-item h4 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 15px;
+}
+
+.future-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.future-item li {
+    color: #ffffff;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.contact-item {
+    background: rgba(0, 150, 255, 0.1);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-item h4 {
+    color: #0096ff;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 10px;
+}
+
+.contact-item p {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title, .missions-title, .about-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle, .missions-subtitle, .about-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .countdown-container {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        min-width: auto;
+    }
+    
+    .countdown-timer {
+        gap: 5px;
+    }
+    
+    .countdown-unit {
+        min-width: 50px;
+    }
+    
+    .countdown-number {
+        font-size: 1.2rem;
+    }
+    
+    .info-panel {
+        right: 20px;
+        left: 20px;
+        width: auto;
+    }
+    
+    .main-nav {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-input {
+        min-width: auto;
+    }
+
+    .filter-options {
+        justify-content: center;
+    }
+
+    .missions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid,
+    .tech-stack,
+    .future-features,
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title, .missions-title, .about-title {
+        font-size: 2rem;
+    }
+    
+    .countdown-container {
+        padding: 15px;
+    }
+    
+    .countdown-timer {
+        gap: 3px;
+    }
+    
+    .countdown-unit {
+        min-width: 40px;
+    }
+    
+    .countdown-number {
+        font-size: 1rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.7rem;
+    }
+
+    .missions-content,
+    .about-content {
+        padding: 100px 15px 30px;
+    }
+
+    .about-section {
+        padding: 20px;
+    }
+}
